@@ -10,16 +10,8 @@ Encuentra la intersección entre los conjuntos pares y multiplos_de_tres y guár
 
 def main():
     numeros = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
-    numeros_pares = set()
-    numeros_multiplos_de_tres = set()
-
-    for numero in numeros:
-        if numero%2 == 0:
-            numeros_pares.add(numero)
-            if numero%3 == 0:
-                numeros_multiplos_de_tres.add(numero)
-        elif numero%3 == 0:
-            numeros_multiplos_de_tres.add(numero)
+    numeros_pares = set(pares for pares in numeros if pares%2 == 0)
+    numeros_multiplos_de_tres = set(multiplos for multiplos in numeros if multiplos%3 == 0)
 
     print(numeros_pares)
     print(numeros_multiplos_de_tres)
