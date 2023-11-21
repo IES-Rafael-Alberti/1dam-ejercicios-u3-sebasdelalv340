@@ -6,13 +6,13 @@ def crearLista(lista):
     for i in reversed(range(1, 11)):
         lista.append(i)
 
-    return lista
+    print(", ".join(map(str, lista)))
 
-
+   
 def main():
     lista = []
     try:
-        print(crearLista(lista))
+        crearLista(lista)
     except Exception:
         print("Error")
     
