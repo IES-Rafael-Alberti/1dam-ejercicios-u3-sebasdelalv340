@@ -25,6 +25,6 @@ def main():
      print(pedir_conjunto(conjunto_potencia))
    
 
-
+   
 if __name__ == "__main__":
     main()

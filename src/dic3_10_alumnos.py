@@ -21,6 +21,7 @@ def mostrar_menu():
 
 
 def agregar_cliente(base_datos):
+
     nif = input("Ingrese el NIF del cliente: ")
     nombre = input("Ingrese el nombre del cliente: ")
     direccion = input("Ingrese la dirección del cliente: ")
@@ -29,11 +30,11 @@ def agregar_cliente(base_datos):
     preferente = input("¿Es cliente preferente? (Sí/No): ").lower() == 'sí'
 
     #TODO: Crear un diccionario cliente con toda la información...
-    ???
-
+    cliente_info = {"nombre": nombre, "direccion": direccion, "telefono": telefono, "correo": correo, "preferente": preferente}
+    
     #TODO: Añadir el diccionario cliente que previamente has creado al 
     # diccionario principal que hemos llamado base_datos...
-    ???
+    base_datos[nif] = cliente_info
 
     print(f"Cliente {nombre} añadido correctamente.")
 
@@ -43,7 +44,11 @@ def eliminar_cliente(base_datos):
     #TODO: eliminar el cliente con nif que se ha introducido
     #Si existe mostrar por consola "Cliente con NIF XXXXXXXXX eliminado correctamente."
     #Sino mostrar "No se encontró un cliente con NIF XXXXXXXXX en la base de datos."
-    ???
+    if nif not in base_datos:
+        print(f"No se encontró un cliente con NIF {nif} en la base de datos.")
+    else:          
+        base_datos.remove(nif)
+        print(f"Cliente con NIF {nif} eliminado correctamente.")
 
 
 def mostrar_cliente(base_datos):
@@ -53,7 +58,8 @@ def mostrar_cliente(base_datos):
         print("\nDatos del cliente:")
         #TODO: Mostrar todos los datos del cliente
         #en cada línea de consola mostrar el par clave: valor de sus datos...
-        ???
+        for clave, valor in base_datos[nif].items():
+            print(f"{clave}: {valor}\n")
     else:
         print(f"No se encontró un cliente con NIF {nif} en la base de datos.")
 
@@ -72,22 +78,22 @@ def listar_clientes_preferentes(base_datos):
 
 
 def main():
-    base_datos_clientes = {}
+    base_datos = {}
 
     while True:
         mostrar_menu()
         opcion = input("Seleccione una opción (1-6): ")
 
         if opcion == '1':
-            agregar_cliente(base_datos_clientes)
+            agregar_cliente(base_datos)
         elif opcion == '2':
-            eliminar_cliente(base_datos_clientes)
+            eliminar_cliente(base_datos)
         elif opcion == '3':
-            mostrar_cliente(base_datos_clientes)
+            mostrar_cliente(base_datos)
         elif opcion == '4':
-            listar_clientes(base_datos_clientes)
+            listar_clientes(base_datos)
         elif opcion == '5':
-            listar_clientes_preferentes(base_datos_clientes)
+            listar_clientes_preferentes(base_datos)
         elif opcion == '6':
             print("Programa terminado.")
             break

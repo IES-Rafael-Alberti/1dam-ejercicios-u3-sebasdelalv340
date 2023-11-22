@@ -32,11 +32,12 @@ def main():
             #TODO: Crear un diccionario con la información del cliente, 
             # pero hacerlo de otra forma sin usar la clase zip()
             # Podéis depurar el programa para ver qué hace y así poder solucionarlo...
-            cliente_info = {campo: valor for campo, valor in zip(nombres_campos, valores)}
-            ???
+            cliente_info = {}
+            for i in range(1, len(nombres_campos)):
+                cliente_info[nombres_campos[i]] = valores[i]
 
             #TODO: Añadir el diccionario del cliente al diccionario directorio_clientes...
-            ???
+            directorio_clientes[valores[0]] = cliente_info
 
     # Mostrar el diccionario resultante
     print(directorio_clientes)
